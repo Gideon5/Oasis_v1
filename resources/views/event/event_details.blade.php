@@ -97,6 +97,10 @@
                                                         value="{{ $ticket->price }}">
                                                     <input type="hidden" name="tickets[{{ $ticket->id }}][type]"
                                                         value="{{ $ticket->type }}">
+                                                    <input type="hidden" name="tickets[{{ $ticket->id }}][event_id]"
+                                                        value="{{ $event->id }}">
+                                                    <input type="hidden" name="tickets[{{ $ticket->id }}][ticket_id]"
+                                                        value="{{ $ticket->id }}">
                                                     <button type="button" id="increment-button-{{ $ticket->id }}"
                                                         onclick="increaseQuantity({{ $ticket->id }})"
                                                         class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">

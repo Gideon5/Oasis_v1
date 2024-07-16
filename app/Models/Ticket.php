@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Event;
+use App\Models\InvoiceTicket;
 
 class Ticket extends Model
 {
@@ -26,6 +27,10 @@ class Ticket extends Model
 
     public function event(){
         return $this->belongsTo(Event::class);
+    }
+
+    public function invoiceTickets() {
+        return $this->hasMany(InvoiceTicket::class);
     }
 
 }

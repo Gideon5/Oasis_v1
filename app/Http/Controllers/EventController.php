@@ -207,7 +207,7 @@ class EventController extends Controller
         // dd($validatedData);
 
 
-        // Ticket::create($validatedData);
+        Ticket::create($validatedData);
 
         return redirect()->route('manage_event', $event->slug)->with('success','Ticket added succesfully');
 
@@ -226,12 +226,16 @@ class EventController extends Controller
         // $ticket = Ticket::where('event_id', $event->id);
         // dd($event->tickets()->get());
 
+        // dd($event);
+
         return view('event.event_details', compact('event'));
     }
 
     public function checkout(){
         return view('event.ticket.checkout');
     }
+
+    
 
 
 

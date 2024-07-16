@@ -8,21 +8,34 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\PaystackController;
 
 
 
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
-
+ 
 Route::get('/events/cart', [CartController::class, 'index'])->name('cartpage');
 // Route::get('/events/event/checkout', [EventController::class, 'checkout'])->name('checkout');
 
-Route::get('/events/event/{id}', [EventController::class, 'getEventDetails'])->name('event_Details');
-Route::post('/checkout', [CheckoutController::class, 'show'])->name('checkout');
+Route::get('/events/event/{slug}', [EventController::class, 'getEventDetails'])->name('event_Details');
+
+Route::post('/checkout', [CheckoutController::class, 'show'])->middleware(['auth'])->name('checkout');
+Route::get('/test', function() {
+    return view('event.checkout.testcheckout');
+});
+
 Route::get('/events/{category}', [EventController::class, 'showEventsByCategory'])->name('events.category');
 
 Route::get('/app/dashboard', function() {
     return view('dashboard.index');
 })->middleware(['auth','admin'])->name('dashboard');
+
+Route::get('/callback', [PaystackController::class, 'callback'])->name('callback');
+Route::get('/success', [PaystackController::class, 'success'])->name('success');
+Route::get('/cancel', [PaystackController::class, 'cancel'])->name('cancel');
+
+
+
 
 Route::get('/app/dashboard/event/manage/{slug}', [EventController::class, 'manage'])->middleware(['auth', 'admin'])->name('manage_event');
 Route::get('/app/dashboard/events', [EventController::class, 'index'])->middleware(['auth', 'admin'])->name('all_events');
