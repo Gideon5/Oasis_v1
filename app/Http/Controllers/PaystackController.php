@@ -83,7 +83,7 @@ class PaystackController extends Controller
 
             $payment = new Payment();
             $payment->invoice_id = $invoice->id;
-            $payment->payment_id = $response->data->id;
+            $payment->payment_id = $reference;
             $payment->user_id = $user->id;
             $payment->amount = $response->data->amount / 100;
             $payment->currency = $response->data->currency;

@@ -115,7 +115,7 @@
 
 
 
-                    <li class="dropdown">
+                    {{-- <li class="dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">About Us</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -125,9 +125,16 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item page-scroll" href="privacy.html">Privacy Policy</a>
                         </div>
-                    </li>
-
+                    </li> --}}
+                    
+                    @if (Auth::user())
                     <li>
+                        <a href="{{ route('dashboard.user') }}" class="nav-link page-scroll" href="#features">Dashboard</a>
+                    </li>
+                    @endif
+                    
+
+                    {{-- <li>
                         <!-- component -->
                         <div class="relative py-2">
                             <div class="t-0 absolute left-3">
@@ -143,7 +150,7 @@
                                 </svg>
                             </a>
                         </div>
-                    </li>
+                    </li> --}}
                     {{-- <li>
                             <a class="nav-link page-scroll" href="#download">Download</a>
                         </li> --}}
