@@ -176,7 +176,7 @@ class EventController extends Controller
 
         return view('dashboard.events.ticket.create', compact(['event']));
     }
-
+ 
     public function storeTicket(Request $request, $id){
         $event = Event::findOrFail($id);
 
@@ -233,6 +233,20 @@ class EventController extends Controller
 
     public function checkout(){
         return view('event.ticket.checkout');
+    }
+
+    public function search(Request $request){
+        // dd($request->all());
+        //come here to fix to make it show events within 2 or 3 weeks?????
+        $events = Event::all();
+        $searchTerm = $request->search;
+
+        if ($searchTerm) {
+            $searchResults = Event::where('name', 'like', '%' . $searchTerm . '%')->get();
+        } else {
+            $searchResults = Event::all();
+        }
+        return view('event.search.index', compact(['searchResults', 'events', 'searchTerm']));
     }
 
     
