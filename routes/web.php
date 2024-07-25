@@ -24,7 +24,7 @@ Route::post('/checkout', [CheckoutController::class, 'show'])->middleware(['auth
 // Route::get('/test', function() {
 //     return view('event.checkout.testcheckout');
 // });
-
+Route::get('/events/search', [EventController::class, 'search'])->name('event.search');
 Route::get('/events/{category}', [EventController::class, 'showEventsByCategory'])->name('events.category');
 
 Route::get('/app/dashboard', function() {

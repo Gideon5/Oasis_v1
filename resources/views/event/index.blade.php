@@ -44,12 +44,6 @@
                                 {{ strtoupper($category) }} EVENTS COMING SOON...</h1>
                         </div>
                     @endif
-
-
-
-
-
-
                 </div>
             </div>
         </div>

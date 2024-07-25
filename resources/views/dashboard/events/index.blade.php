@@ -52,6 +52,9 @@
                         <th scope="col" class="px-6 py-3">
                             Event_Status(Online/Offline)
                         </th>
+                        <th scope="col" class="px-6 py-3">
+                            Flyer
+                        </th>
                         {{-- <th scope="col" class="px-6 py-3">
                             Category
                         </th>
@@ -73,7 +76,7 @@
                                 {{ $event->category }}
                             </td>
                             <td class="px-6 py-4">
-                               {{-- {{well put togle here}} --}}
+                                <img class="w-16 h-12" src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->name }}">
                             </td>
 
                             <td class="px-6 py-4 gap-2 flex flex-row">
