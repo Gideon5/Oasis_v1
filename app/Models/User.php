@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Invoice;
 use App\Models\Payment;
+use App\Models\Favorite;
+use App\Models\Event;
 
 class User extends Authenticatable
 {
@@ -47,11 +49,19 @@ class User extends Authenticatable
         ];
     }
 
+    public function events(){
+        return $this->hasMany(Event::class);
+    }
+
     public function invoices() {
         return $this->hasMany(Invoice::class);
     }
 
     public function payments(){
         return $this->hasMany(Payment::class);
+    }
+
+    public function favorites(){
+        return $this->hasMany(Favorite::class);
     }
 }
