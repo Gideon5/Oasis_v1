@@ -35,6 +35,7 @@
 
     <!-- Favicon  -->
     <link rel="icon" href="{{ asset('images/favicon.png') }}" />
+    @livewireStyles
 </head>
 
 <body data-spy="scroll" data-target=".fixed-top">
