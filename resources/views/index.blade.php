@@ -58,24 +58,29 @@
 
                     @if (!empty($events) && count($events) > 0)
                         @foreach ($events as $event)
-                            <div
-                                class="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif]">
-                                <div class="w-full h-48 overflow-hidden">
-                                    <img src="{{ asset('storage/' . $event->image) }}" class="w-full h-full object-cover"
-                                        alt="null" />
-                                </div>
-                                <div class="px-4 py-6">
-                                    <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
-                                    <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
-                                    <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
-                                    <a href="{{ route('event_Details', $event->slug) }}">
-                                        <button type="button"
-                                            class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
-                                            View
-                                        </button>
-                                    </a>
-                                </div>
+                        <div class="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif]">
+                            <div class="w-full h-48 overflow-hidden">
+                                <img src="{{ asset('storage/' . $event->image) }}" class="w-full h-full object-cover" alt="null" />
                             </div>
+                            <div class="px-4 py-6">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
+                                    <button id="favorite-btn-{{ $event->id }}" class="favorite-btn" data-id="{{ $event->id }}">
+                                        <svg class="w-6 h-6 {{ $event->is_favorited ? 'text-red-500' : 'text-gray-500' }}" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
+                                <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
+                                <a href="{{ route('event_Details', $event->slug) }}">
+                                    <button type="button" class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
+                                        View
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        
                         @endforeach
                     @else
                         <div>
