@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use App\Models\EventCategory;
 use App\Models\Ticket;
+use App\Models\Favorite;
 use Carbon\Carbon;
 
 class Event extends Model
@@ -41,7 +42,16 @@ class Event extends Model
         return Carbon::parse($this->attributes['start_time'])->format('g:i A');
     }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
     public function tickets(){
         return $this->hasMany(Ticket::class);
     }
+
+    public function favorite(){
+        return $this->hasMany(Favorite::class);
+    }
+
 }

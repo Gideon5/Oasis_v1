@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Payment;
 use App\Models\Invoice;
+use App\Models\Favorite;
 
 
 class DashboardController extends Controller
@@ -14,6 +15,7 @@ class DashboardController extends Controller
     public function show(){
         $user = Auth::user();
         $payments = Payment::where('user_id', $user->id)->get();
+        $favorites = Favorite::where('user_id', $user->id)->with('event')->get();
         $transactions = DB::table('users')
         ->join('invoices','users.id', '=' ,'invoices.user_id')
         ->join('payments', 'invoices.id', '=', 'payments.invoice_id')
@@ -32,7 +34,7 @@ class DashboardController extends Controller
         // dd($transactions);
 
 
-        return view('user.dashboard', compact('transactions', 'event_name'));
+        return view('user.dashboard', compact('transactions', 'event_name' , 'favorites'));
 
 
     }

@@ -20,7 +20,7 @@
     <meta name="twitter:card" content="summary_large_image" /> <!-- to have large image post format in Twitter -->
 
     <!-- Webpage Title -->
-    <title>Pavo Webpage Title</title>
+    <title>MbaTicks</title>
 
     <!-- Styles -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -35,6 +35,7 @@
 
     <!-- Favicon  -->
     <link rel="icon" href="{{ asset('images/favicon.png') }}" />
+    @livewireStyles
 </head>
 
 <body data-spy="scroll" data-target=".fixed-top">
