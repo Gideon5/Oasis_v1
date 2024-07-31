@@ -18,28 +18,37 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
                         <!-- Replace this with your grid items -->
 
-                        
-                        <div
-                            class="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif]">
-                            <div class="w-full h-48 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="no-image" class="w-full h-full object-cover"
-                                    alt="null" />
+                        @if (!empty($favorites) && count($favorites) > 0)
+                            @foreach ($favorites as $favorite)
+                                <div
+                                    class="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif]">
+                                    <div class="w-full h-48 overflow-hidden">
+                                        <img src="{{ asset('storage/' . $favorite->event->image) }}"
+                                            class="w-full h-full object-cover" alt="Event Image" />
+                                    </div>
+                                    <div class="px-4 py-6">
+                                        <div class="flex items-center justify-between">
+                                            <h3 class="text-[#333] text-xl font-bold">{{ $favorite->event->name }}</h3>
+                                            @livewire('fav-button', ['eventId' => $favorite->event->id, 'is_Favorited' => $favorite->event->is_favorited])
+                                        </div>
+                                        <p class="mt-4 text-sm text-gray-500">{{ $favorite->event->location }}</p>
+                                        <p class="mt-4 text-sm text-gray-500">{{ $favorite->event->date }}</p>
+                                        <a href="{{ route('event_Details', $favorite->event->slug) }}">
+                                            <button type="button"
+                                                class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
+                                                View
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <div>
+                                <h1
+                                    class="mr-14 text-4xl flex items-center justify-center font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl">
+                                    No favorites here..</h1>
                             </div>
-                            <div class="px-4 py-6">
-                                <h3 class="text-[#333] text-xl font-bold">Favorites</h3>
-                                <p class="mt-4 text-sm text-gray-500">Favorites</p>
-                                <p class="mt-4 text-sm text-gray-500">Favorites</p>
-                                <a href="">
-                                    <button type="button"
-                                        class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
-                                        View
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                        
-
-                       
+                        @endif
 
                     </div>
                 </div>
@@ -48,20 +57,23 @@
                     class="flex items-center justify-center transition-all duration-300 bg-white p-4 shadow-md border-l-4 border-blue-600">
                     <div class="grid grid-cols-1 hover:grid-cols-6">
                         @foreach ($transactions as $transaction)
-                        <div class="max-w-4xl">
-                            <h2 class="text-2xl font-semibold mb-2 text-blue-600">Event name</h2>
-                            <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->currency  }} {{ $transaction->total_amount }}</h2>
-                            <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->currency  }}</h2>
-                            <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->payment_status}}</h2>
-                            <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->paid_at}}</h2>
-                            <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquam
-                                justo nec justo lacinia, vel ullamcorper nibh tincidunt.</p>
-                            <!-- Add your list of things here -->
-                        </div>
-                        <hr class="h-4" />
+                            <div class="max-w-4xl">
+                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">Event name</h2>
+                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->currency }}
+                                    {{ $transaction->total_amount }}</h2>
+                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->currency }}</h2>
+                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->payment_status }}
+                                </h2>
+                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->paid_at }}</h2>
+                                <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                                    aliquam
+                                    justo nec justo lacinia, vel ullamcorper nibh tincidunt.</p>
+                                <!-- Add your list of things here -->
+                            </div>
+                            <hr class="h-4" />
                         @endforeach
-                      
-                        
+
+
                     </div>
                 </div>
 
@@ -80,5 +92,6 @@
 @endsection
 
 @section('scripts')
+@livewireScripts
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 @endsection

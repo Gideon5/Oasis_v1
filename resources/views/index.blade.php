@@ -58,26 +58,27 @@
 
                     @if (!empty($events) && count($events) > 0)
                         @foreach ($events as $event)
-                        <div class="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif]">
-                            <div class="w-full h-48 overflow-hidden">
-                                <img src="{{ asset('storage/' . $event->image) }}" class="w-full h-full object-cover" alt="null" />
-                            </div>
-                            <div class="px-4 py-6">
-                                <div class="flex items-center justify-between">
-                                    <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
-                                    @livewire('favorite-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                            <div
+                                class="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif]">
+                                <div class="w-full h-48 overflow-hidden">
+                                    <img src="{{ asset('storage/' . $event->image) }}" class="w-full h-full object-cover"
+                                        alt="Event Image" />
                                 </div>
-                                <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
-                                <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
-                                <a href="{{ route('event_Details', $event->slug) }}">
-                                    <button type="button" class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
-                                        View
-                                    </button>
-                                </a>
+                                <div class="px-4 py-6">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
+                                        @livewire('fav-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                                    </div>
+                                    <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
+                                    <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
+                                    <a href="{{ route('event_Details', $event->slug) }}">
+                                        <button type="button"
+                                            class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
+                                            View
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        
-                        
                         @endforeach
                     @else
                         <div>
@@ -193,18 +194,18 @@
                     <!-- Replace this with your grid items -->
 
                     @if (!empty($sports) && count($sports) > 0)
-                        @foreach ($sports as $sport)
+                        @foreach ($sports as $event)
                             <div
                                 class="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif]">
                                 <div class="w-full h-48 overflow-hidden">
-                                    <img src="{{ asset('storage/' . $sport->image) }}" class="w-full h-full object-cover"
+                                    <img src="{{ asset('storage/' . $event->image) }}" class="w-full h-full object-cover"
                                         alt="null" />
                                 </div>
                                 <div class="px-4 py-6">
-                                    <h3 class="text-[#333] text-xl font-bold">{{ $sport->name }}</h3>
-                                    <p class="mt-4 text-sm text-gray-500">{{ $sport->location }}</p>
-                                    <p class="mt-4 text-sm text-gray-500">{{ $sport->date }}</p>
-                                    <a href="{{ route('event_Details', $sport->slug) }}">
+                                    <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
+                                    <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
+                                    <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
+                                    <a href="{{ route('event_Details', $event->slug) }}">
                                         <button type="button"
                                             class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
                                             View
@@ -235,18 +236,18 @@
                     <!-- Replace this with your grid items -->
 
                     @if (!empty($others) && count($others) > 0)
-                        @foreach ($others as $other)
+                        @foreach ($others as $event)
                             <div
                                 class="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif]">
                                 <div class="w-full h-48 overflow-hidden">
-                                    <img src="{{ asset('storage/' . $other->image) }}" class="w-full h-full object-cover"
+                                    <img src="{{ asset('storage/' . $event->image) }}" class="w-full h-full object-cover"
                                         alt="null" />
                                 </div>
                                 <div class="px-4 py-6">
-                                    <h3 class="text-[#333] text-xl font-bold">{{ $other->name }}</h3>
-                                    <p class="mt-4 text-sm text-gray-500">{{ $other->location }}</p>
-                                    <p class="mt-4 text-sm text-gray-500">{{ $other->date }}</p>
-                                    <a href="{{ route('event_Details', $other->slug) }}">
+                                    <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
+                                    <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
+                                    <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
+                                    <a href="{{ route('event_Details', $event->slug) }}">
                                         <button type="button"
                                             class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
                                             View
