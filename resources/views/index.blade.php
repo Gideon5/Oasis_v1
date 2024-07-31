@@ -112,10 +112,13 @@
                                 class="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif]">
                                 <div class="w-full h-48 overflow-hidden">
                                     <img src="{{ asset('storage/' . $event->image) }}" class="w-full h-full object-cover"
-                                        alt="null" />
+                                        alt="Event Image" />
                                 </div>
                                 <div class="px-4 py-6">
-                                    <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
+                                        @livewire('fav-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                                    </div>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
                                     <a href="{{ route('event_Details', $event->slug) }}">
@@ -151,18 +154,21 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
                     <!-- Replace this with your grid items -->
                     @if (!empty($concerts) && count($concerts) > 0)
-                        @foreach ($concerts as $concert)
+                        @foreach ($concerts as $event)
                             <div
                                 class="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif]">
                                 <div class="w-full h-48 overflow-hidden">
-                                    <img src="{{ asset('storage/' . $concert->image) }}" class="w-full h-full object-cover"
-                                        alt="null" />
+                                    <img src="{{ asset('storage/' . $event->image) }}" class="w-full h-full object-cover"
+                                        alt="Event Image" />
                                 </div>
                                 <div class="px-4 py-6">
-                                    <h3 class="text-[#333] text-xl font-bold">{{ $concert->name }}</h3>
-                                    <p class="mt-4 text-sm text-gray-500">{{ $concert->location }}</p>
-                                    <p class="mt-4 text-sm text-gray-500">{{ $concert->date }}</p>
-                                    <a href="{{ route('event_Details', $concert->slug) }}">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
+                                        @livewire('fav-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                                    </div>
+                                    <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
+                                    <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
+                                    <a href="{{ route('event_Details', $event->slug) }}">
                                         <button type="button"
                                             class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
                                             View
@@ -199,10 +205,13 @@
                                 class="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif]">
                                 <div class="w-full h-48 overflow-hidden">
                                     <img src="{{ asset('storage/' . $event->image) }}" class="w-full h-full object-cover"
-                                        alt="null" />
+                                        alt="Event Image" />
                                 </div>
                                 <div class="px-4 py-6">
-                                    <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
+                                        @livewire('fav-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                                    </div>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
                                     <a href="{{ route('event_Details', $event->slug) }}">
@@ -241,10 +250,13 @@
                                 class="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif]">
                                 <div class="w-full h-48 overflow-hidden">
                                     <img src="{{ asset('storage/' . $event->image) }}" class="w-full h-full object-cover"
-                                        alt="null" />
+                                        alt="Event Image" />
                                 </div>
                                 <div class="px-4 py-6">
-                                    <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
+                                        @livewire('fav-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                                    </div>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
                                     <a href="{{ route('event_Details', $event->slug) }}">

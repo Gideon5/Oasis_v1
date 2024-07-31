@@ -23,8 +23,6 @@ class FavButton extends Component
     public function toggleFavorite()
     {
         $userId = Auth::id();
-
-        dd($userId);
         
         if ($this->isFavorited) {
             Favorite::where('event_id', $this->eventId)
