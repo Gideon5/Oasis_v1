@@ -12,8 +12,12 @@ class FavButton extends Component
     public $eventId;
     public $isFavorited;
 
+  
+
     public function mount($eventId)
     {
+
+        
         $this->eventId = $eventId;
         $this->isFavorited = Favorite::where('event_id', $eventId)
             ->where('user_id', Auth::id())
@@ -21,7 +25,11 @@ class FavButton extends Component
     }
 
     public function toggleFavorite()
-    {
+    {   
+        if(!Auth::check()){
+            return redirect()->route('login');
+        }
+
         $userId = Auth::id();
         
         if ($this->isFavorited) {
