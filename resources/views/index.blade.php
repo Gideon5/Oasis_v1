@@ -25,7 +25,7 @@
                 <div class="flex w-full mx-10 rounded bg-white">
                     <input
                         class=" w-full border-none bg-transparent px-4 py-1 text-gray-400 outline-none focus:outline-none"
-                        name="search" type="search" placeholder="Search event" />
+                        name="search" type="search" placeholder="Search event" required/>
                     <button type="submit" class="m-2 rounded bg-blue-600 px-4 py-2 text-white">
                         <svg class="fill-current h-6 w-6" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"

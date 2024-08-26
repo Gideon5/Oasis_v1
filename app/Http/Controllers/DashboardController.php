@@ -12,6 +12,10 @@ use App\Models\Favorite;
 
 class DashboardController extends Controller
 {
+    public function index() {
+        return view('dashboard.index');
+    }
+
     public function show(){
         $user = Auth::user();
         $payments = Payment::where('user_id', $user->id)->get();
@@ -37,5 +41,13 @@ class DashboardController extends Controller
         return view('user.dashboard', compact('transactions', 'event_name' , 'favorites'));
 
 
+    }
+
+    public function users(){
+        return view('dashboard.users.index'); 
+    }
+
+    public function create_user(){
+        return view('dashboard.users.create');
     }
 }

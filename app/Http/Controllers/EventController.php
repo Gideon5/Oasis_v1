@@ -244,8 +244,9 @@ class EventController extends Controller
         if ($searchTerm) {
             $searchResults = Event::where('name', 'like', '%' . $searchTerm . '%')->get();
         } else {
-            $searchResults = Event::all();
+            $searchResults = [];
         }
+
         return view('event.search.index', compact(['searchResults', 'events', 'searchTerm']));
     }
 

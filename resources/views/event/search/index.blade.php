@@ -59,7 +59,7 @@
                     @else
                         <div>
                             <h1 class="mr-14 mt-10 text-4xl flex items-center justify-center font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl">
-                                No Event found
+                                No Event found for {{ $searchTerm }}
                             </h1>
                         </div>
                     @endif
