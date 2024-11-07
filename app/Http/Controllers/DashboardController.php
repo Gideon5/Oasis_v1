@@ -19,7 +19,8 @@ class DashboardController extends Controller
     public function show(){
         $user = Auth::user();
         $payments = Payment::where('user_id', $user->id)->get();
-        $favorites = Favorite::where('user_id', $user->id)->with('event')->get();
+        $favorites = $user->favorites()->with('event')->get();
+
         $transactions = DB::table('users')
         ->join('invoices','users.id', '=' ,'invoices.user_id')
         ->join('payments', 'invoices.id', '=', 'payments.invoice_id')
@@ -32,14 +33,10 @@ class DashboardController extends Controller
         ->select('events.name')
         ->get();
 
-        $event_name = ($event[0]->name);
-        //fix later
-        // dd($event_name);
-        // dd($transactions);
 
-
-        return view('user.dashboard', compact('transactions', 'event_name' , 'favorites'));
-
+        //fix the favroites on the dashboard
+        
+        return view('user.dashboard', compact('transactions' , 'favorites'));
 
     }
 

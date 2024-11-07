@@ -17,19 +17,21 @@
                     class="flex items-center justify-center transition-all duration-300 bg-white p-4 shadow-md border-l-4 border-blue-600">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
                         <!-- Replace this with your grid items -->
-
+                        
                         @if (!empty($favorites) && count($favorites) > 0)
+                       
                             @foreach ($favorites as $favorite)
+                            
                                 <div
                                     class="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif]">
                                     <div class="w-full h-48 overflow-hidden">
                                         <img src="{{ asset('storage/' . $favorite->event->image) }}"
                                             class="w-full h-full object-cover" alt="Event Image" />
                                     </div>
-                                    <div class="px-4 py-6">
+                                    <div class="px-4 py-6"> 
                                         <div class="flex items-center justify-between">
                                             <h3 class="text-[#333] text-xl font-bold">{{ $favorite->event->name }}</h3>
-                                            @livewire('fav-button', ['eventId' => $favorite->event->id, 'is_Favorited' => $favorite->event->is_favorited])
+                                            @livewire('fav-button', ['event_id' => $favorite->event->id, 'is_favorite' => $favorite->is_favorite])
                                         </div>
                                         <p class="mt-4 text-sm text-gray-500">{{ $favorite->event->location }}</p>
                                         <p class="mt-4 text-sm text-gray-500">{{ $favorite->event->date }}</p>

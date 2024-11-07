@@ -214,7 +214,7 @@ class EventController extends Controller
 
             } 
             catch (ValidationException $e) {
-                dd($e->errors());
+                // dd($e->errors());
                 return redirect()->back()->withErrors($e->errors());
     
             }

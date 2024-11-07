@@ -3,9 +3,9 @@
 @section('content')
     <!-- Introduction -->
     <!-- Header -->
-    <header id="header" class="header py-28 text-center md:pt-36 lg:text-left xl:pt-44 xl:pb-32">
+    <header id="header" class="header text-center md:pt-36 lg:text-left xl:pt-44 xl:pb-32">
         <div class="container px-4 sm:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
-            <div class="mb-16 lg:mt-32 xl:mt-40 xl:mr-12">
+            {{-- <div class="mb-16 lg:mt-32 xl:mt-40 xl:mr-12">
                 <h1 class="h1-large mb-5">Team management mobile application</h1>
                 <p class="p-large mb-8">Start getting things done together with your team based on Pavo's revolutionary
                     team management features</p>
@@ -15,7 +15,7 @@
             <div class="xl:text-right">
                 <img class="inline" src="{{ asset('images/header-smartphone.png') }}" alt="alternative" />
             </div>
-        </div>
+        </div> --}}
     </header>
 
     <section class="">
@@ -67,7 +67,7 @@
                                 <div class="px-4 py-6">
                                     <div class="flex items-center justify-between">
                                         <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
-                                        @livewire('fav-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                                        @livewire('fav-button', ['event_id' => $event->id, 'is_favorite' => $event->is_favorited])
                                     </div>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
@@ -117,7 +117,7 @@
                                 <div class="px-4 py-6">
                                     <div class="flex items-center justify-between">
                                         <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
-                                        @livewire('fav-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                                        @livewire('fav-button', ['event_id' => $event->id, 'is_favorite' => $event->is_favorited])
                                     </div>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
@@ -164,7 +164,7 @@
                                 <div class="px-4 py-6">
                                     <div class="flex items-center justify-between">
                                         <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
-                                        @livewire('fav-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                                        @livewire('fav-button', ['event_id' => $event->id, 'is_favorite' => $event->is_favorited])
                                     </div>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
@@ -210,7 +210,7 @@
                                 <div class="px-4 py-6">
                                     <div class="flex items-center justify-between">
                                         <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
-                                        @livewire('fav-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                                        @livewire('fav-button', ['event_id' => $event->id, 'is_favorite' => $event->is_favorited])
                                     </div>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
@@ -255,7 +255,7 @@
                                 <div class="px-4 py-6">
                                     <div class="flex items-center justify-between">
                                         <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
-                                        @livewire('fav-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                                        @livewire('fav-button', ['event_id' => $event->id, 'is_favorite' => $event->is_favorited])
                                     </div>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>

@@ -40,6 +40,20 @@
             }
         </style>
         <div class="min-h-screen bg-gray-100 p-0 sm:p-12">
+
+            @if($errors->any()) 
+            <div id="alert" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                @foreach ($errors->all() as $e)
+                <p>{{ $e }}</p>
+                @endforeach
+            </div>           
+            @endif
+            
+            <script>
+              var alert = document.getElementById("alert");
+              setTimeout(function(){ alert.classList.add("hidden"); }, 2000);
+            </script>
+
             <div>
                 <button  class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-pink-500 hover:bg-pink-600 hover:shadow-lg focus:outline-none">
                         back icon too
