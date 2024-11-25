@@ -65,9 +65,9 @@
                                 </svg>
                                 <div class="flex flex-col ml-3">
                                     <div class="font-medium leading-none">{{ $ticket->type }} tickets</div>
-                                    <p>Price: GHS {{ $ticket->tickets_sold }}</p>
+                                    <p>Price: GHS {{ $ticket->price }}</p>
                                     <p>Sold {{ $ticket->tickets_sold }}</p>
-                                    <p>Left {{ $ticket->tickets_left }}</p>
+                                    <p>Left {{ $ticket->ticket_quantity - $ticket->tickets_sold }}</p>
                                     <p class="text-sm text-gray-600 leading-none mt-1">By deleting your account you will
                                         lose your
                                         all data

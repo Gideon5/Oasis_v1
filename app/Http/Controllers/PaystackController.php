@@ -56,25 +56,22 @@ class PaystackController extends Controller
                 
                 $invoice = new Invoice();
                 $invoice->user_id = $user->id;
-                $invoice->total_amount = $response->data->amount / 100; // Adjust amount to match your currency format
+                $invoice->total_amount = $response->data->amount / 100; 
                 $invoice->invoice_id = $invoice_id;
                 $invoice->paid_at = $paid_at;
                 $invoice->save();
 
             $meta_data = $response->data->metadata->custom_fields;
-            // dd($meta_data[0]->event_id);
 
             foreach ($meta_data as $field) {
                 $invoice_ticket = new InvoiceTicket();
                 $invoice_ticket->invoice_id = $invoice->id;
-                $invoice_ticket->ticket_id = $field->ticket_id; // Adjust to match your metadata structure
-                $invoice_ticket->quantity = $field->ticket_quantity; // Adjust to match your metadata structure
+                $invoice_ticket->ticket_id = $field->ticket_id; 
+                $invoice_ticket->quantity = $field->ticket_quantity; 
                 $invoice_ticket->save();
 
                 $ticketModel = Ticket::findOrFail($field->ticket_id); 
-                $ticketModel->ticket_quantity -= $field->ticket_quantity; 
                 $ticketModel->tickets_sold += $field->ticket_quantity; 
-                $ticketModel->tickets_left = $ticketModel->ticket_quantity; 
                 $ticketModel->save();
             }
 

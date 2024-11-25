@@ -59,20 +59,21 @@
                     class="flex items-center justify-center transition-all duration-300 bg-white p-4 shadow-md border-l-4 border-blue-600">
                     <div class="grid grid-cols-1 hover:grid-cols-6">
                         @foreach ($transactions as $transaction)
-                            <div class="max-w-4xl">
-                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">Event name</h2>
-                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->currency }}
-                                    {{ $transaction->total_amount }}</h2>
-                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->currency }}</h2>
-                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->payment_status }}
+                        {{-- link to page --}}
+                        <a href="{{ route('tickets') }}">
+                            <div class="max-w-4xl border rounded-md border-blue-400 hover:bg-blue-300">
+                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">Transaction Id: {{ $transaction->invoice_id }}
+                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">
+                                   Amt: {{ $transaction->total_amount }}</h2>
                                 </h2>
-                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->paid_at }}</h2>
+                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">Transaction date: {{ $transaction->paid_at }}</h2>
                                 <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
                                     aliquam
                                     justo nec justo lacinia, vel ullamcorper nibh tincidunt.</p>
-                                <!-- Add your list of things here -->
                             </div>
                             <hr class="h-4" />
+
+                        </a>
                         @endforeach
 
 
@@ -82,10 +83,9 @@
                 <div x-show="openTab === 3"
                     class="flex items-center justify-center transition-all duration-300 bg-white p-4 shadow-md border-l-4 border-blue-600">
                     <div class="max-w-4xl mx-auto">
-                        <h2 class="text-2xl font-semibold mb-2 text-blue-600">Others</h2>
+                        <h2 class="text-2xl font-semibold mb-2 text-blue-600">TBD</h2>
                         <p class="text-gray-700">Fusce hendrerit urna vel tortor luctus, nec tristique odio tincidunt.
                             Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
-                        <!-- Add your list of things here -->
                     </div>
                 </div>
             </div>

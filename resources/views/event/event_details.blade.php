@@ -25,7 +25,7 @@
                         <p class="text-lg mb-6">{{ $event->description }}</p>
                         <div class="mb-6">
                             <p class="text-xl font-bold mb-2">When:</p>
-                            <p class="text-lg">{{ $event->date }}</p>
+                            {{-- <p class="text-lg">{{ $event->date }}</p> --}}
                             <p class="text-lg">{{ $event->formatted_date }} at {{ $event->formatted_start_time }}</p>
 
 
@@ -33,7 +33,7 @@
                         <div class="mb-6">
                             <p class="text-xl font-bold mb-2">Where:</p>
                             <p class="text-lg">{{ $event->location }}</p>
-                            <p class="text-lg">1805 Geary Blvd, San Francisco, CA</p>
+                            {{-- <p class="text-lg">1805 Geary Blvd, San Francisco, CA</p> --}}
                         </div>
                         <div class="mb-6">
                             <p class="text-xl font-bold mb-2">Tickets:</p>

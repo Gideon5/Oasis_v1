@@ -23,10 +23,10 @@
             e.preventDefault();
 
             let handler = PaystackPop.setup({
-                key: '{{ env('PAYSTACK_PUBLIC_KEY') }}', // Replace with your public key
+                key: '{{ env('PAYSTACK_PUBLIC_KEY') }}', 
                 email: "abaaneg@gmail.com",
-                amount: 1500 * 100, // Amount in kobo (GHS * 100)
-                currency: 'GHS', // Specify the currency
+                amount: 1500 * 100, 
+                currency: 'GHS', 
                 metadata: {
                     custom_fields: [
                         {

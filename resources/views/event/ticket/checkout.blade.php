@@ -187,7 +187,7 @@
                     custom_fields: customFields
                 },
                 onClose: function() {
-                    alert('Window closed.');
+                    alert('Transaction cancelled');
                 },
                 callback: function(response) {
                     window.location.href = "{{ route('callback') }}" + '?reference=' + response.reference;

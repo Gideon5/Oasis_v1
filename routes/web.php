@@ -31,6 +31,7 @@ Route::prefix('events/')->group(function () {
 
 
 Route::get('/dashboard',[DashboardController::class, 'show'])->name('dashboard.user')->middleware(['auth']);
+Route::get('/dashboard/invoice/tickets/',[DashboardController::class, 'invoice_tickets'])->name('tickets')->middleware(['auth']);
 Route::get('/callback', [PaystackController::class, 'callback'])->name('callback')->middleware(['auth']);;
 Route::get('/success', [PaystackController::class, 'success'])->name('success')->middleware(['auth']);;
 Route::get('/cancel', [PaystackController::class, 'cancel'])->name('cancel')->middleware(['auth']);;
