@@ -57,19 +57,17 @@
 
                 <div x-show="openTab === 2"
                     class="flex items-center justify-center transition-all duration-300 bg-white p-4 shadow-md border-l-4 border-blue-600">
-                    <div class="grid grid-cols-1 hover:grid-cols-6">
+                    <div class="grid grid-cols-3 gap-8 hover:grid-cols-6">
                         @foreach ($transactions as $transaction)
                         {{-- link to page --}}
-                        <a href="{{ route('tickets') }}">
+                        <a href="{{ route('tickets', ['id' => $transaction->invoice_id]) }}">
                             <div class="max-w-4xl border rounded-md border-blue-400 hover:bg-blue-300">
                                 <h2 class="text-2xl font-semibold mb-2 text-blue-600">Transaction Id: {{ $transaction->invoice_id }}
                                 <h2 class="text-2xl font-semibold mb-2 text-blue-600">
-                                   Amt: {{ $transaction->total_amount }}</h2>
+                                   Amt: ${{ $transaction->total_amount }}</h2>
                                 </h2>
                                 <h2 class="text-2xl font-semibold mb-2 text-blue-600">Transaction date: {{ $transaction->paid_at }}</h2>
-                                <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                                    aliquam
-                                    justo nec justo lacinia, vel ullamcorper nibh tincidunt.</p>
+                                <p class="text-gray-700">m...t.</p>
                             </div>
                             <hr class="h-4" />
 

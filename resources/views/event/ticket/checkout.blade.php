@@ -60,7 +60,7 @@
         <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
             <p class="text-xl font-medium">Payment Details</p>
             <p class="text-gray-400">Complete your order by providing your payment details.</p>
-            <form id="paymentForm">
+            <form  id="paymentForm">
                 <label for="email" class="mt-4 mb-2 block text-sm font-medium">Email</label>
                 <div class="relative">
                     <input type="text" id="email" name="email"
@@ -144,8 +144,8 @@
                         <p class="text-2xl font-semibold text-gray-900">${{ number_format($total, 2) }}</p>
                     </div>
                     
-                        <button type="submit" class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Pay
-                            Order</button>
+                        <button type="submit" class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
+                            Pay Order</button>
                 </div>
         </div>
         </form>
@@ -164,6 +164,9 @@
 
         function payWithPaystack(e) {
             e.preventDefault();
+            
+        //validate form fields later
+
 
             let tickets = @json($tickets);
             console.log(tickets)

@@ -53,8 +53,18 @@ class DashboardController extends Controller
         return view('dashboard.users.create');
     }
 
-    public function invoice_tickets(){
+    public function invoice_tickets($id){
+        $tickets = DB::table('users')
+        ->join('invoices','users.id', '=' ,'invoices.user_id')
+        ->join('invoice_tickets', 'invoices.id', '=' ,'invoice_tickets.invoice_id')
+        ->join('tickets', 'invoice_tickets.ticket_id', '=', 'tickets.id')
+        ->join('events', 'tickets.event_id', '=', 'events.id')
+        ->where('invoices.invoice_id', '=', $id)
+        ->select('events.name','invoice_tickets.quantity', 'tickets.type', 'tickets.price', 'events.image')
+        ->get();
 
-        return view('user.invoice.invoice_tickets');
+        // dd($tickets);
+
+        return view('user.invoice.invoice_tickets', compact('tickets'));
     }
 }

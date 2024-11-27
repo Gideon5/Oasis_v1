@@ -14,14 +14,7 @@ use App\Http\Controllers\DashboardController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
- 
-// Route::get('/events/event/checkout', [EventController::class, 'checkout'])->name('checkout');
-
-
 Route::post('/checkout', [CheckoutController::class, 'show'])->middleware(['auth'])->name('checkout');
-// Route::get('/test', function() {
-//     return view('event.checkout.testcheckout');
-// });
 Route::prefix('events/')->group(function () {
     Route::get('cart', [CartController::class, 'index'])->name('cartpage');
     Route::get('event/{slug}', [EventController::class, 'getEventDetails'])->name('event_Details');
@@ -29,9 +22,8 @@ Route::prefix('events/')->group(function () {
     Route::get('{category}', [EventController::class, 'showEventsByCategory'])->name('events.category');
 });
 
-
 Route::get('/dashboard',[DashboardController::class, 'show'])->name('dashboard.user')->middleware(['auth']);
-Route::get('/dashboard/invoice/tickets/',[DashboardController::class, 'invoice_tickets'])->name('tickets')->middleware(['auth']);
+Route::get('/dashboard/invoice/tickets/{id}/',[DashboardController::class, 'invoice_tickets'])->name('tickets')->middleware(['auth']);
 Route::get('/callback', [PaystackController::class, 'callback'])->name('callback')->middleware(['auth']);;
 Route::get('/success', [PaystackController::class, 'success'])->name('success')->middleware(['auth']);;
 Route::get('/cancel', [PaystackController::class, 'cancel'])->name('cancel')->middleware(['auth']);;

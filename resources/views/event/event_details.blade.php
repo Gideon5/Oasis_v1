@@ -64,11 +64,9 @@
                 <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
                     <div class="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
                         <div class="space-y-6">
-
-
                             <form id="ticket-form" action="{{ route('checkout') }}" method="POST">
                                 @csrf
-                                @foreach ($event->tickets as $ticket)
+                                ` @foreach ($event->tickets as $ticket)
                                     <div class="ticket-item rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6"
                                         data-ticket-id="{{ $ticket->id }}" data-ticket-price="{{ $ticket->price }}">
                                         <div
@@ -212,7 +210,6 @@
             }
         }
 
-        // Initial update
         updateOrderSummary();
     </script>
 @endsection
