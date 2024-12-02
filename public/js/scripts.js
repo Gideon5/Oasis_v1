@@ -1,6 +1,4 @@
-/* Template: Pavo Mobile App Website Tailwind CSS HTML Template
-   Description: Custom JS file
-*/
+
 
 (function($) {
     "use strict"; 

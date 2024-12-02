@@ -23,20 +23,7 @@ class DashboardController extends Controller
 
         $transactions = DB::table('users')
         ->join('invoices','users.id', '=' ,'invoices.user_id')
-        // ->join('invoice_tickets', 'invoices.id', '=' ,'invoice_tickets.invoice_id')
-        // ->join('tickets', 'invoice_tickets.ticket_id', '=', 'tickets.id')
-        // ->join('events', 'tickets.event_id', '=', 'events.id')
-        // ->join('payments', 'invoices.id', '=', 'payments.invoice_id')
-        // ->select('payments.currency', 'invoices.total_amount', 'invoices.paid_at', 'payments.payment_status', 'events.name', 'invoice_tickets.ticket_id', 'invoice_tickets.quantity')
         ->get();
-
-        // $event = DB::table('events')
-        // ->join('tickets', 'events.id', '=', 'tickets.event_id')
-        // ->join('invoice_tickets', 'tickets.id', '=', 'invoice_tickets.ticket_id')
-        // ->get();
-
-        // dd($transactions);
-
 
         //fix the favroites on the dashboard
         //come back and check to put all invoice tickets together in one transaction

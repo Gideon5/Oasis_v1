@@ -37,7 +37,6 @@
         </div>
     </div>
     <div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
-{{-- @dd($tickets) --}}
         <div class="px-4 pt-8">
             <p class="text-xl font-medium">Order Summary</p>
             <p class="text-gray-400">Check your items.</p>
@@ -164,7 +163,7 @@
 
         function payWithPaystack(e) {
             e.preventDefault();
-            
+
         //validate form fields later
 
 
@@ -176,16 +175,17 @@
                     event_id: ticket.event_id,
                     ticket_id: ticket.id,
                     ticket_quantity: ticket.quantity,
-                    price: ticket.price,
+                    ticket_price: ticket.price,
+                    ticket_type: ticket.name,
                     total: ticket.price * ticket.quantity
                 };
             });
 
             let handler = PaystackPop.setup({
-                key: '{{ env('PAYSTACK_PUBLIC_KEY') }}', // Replace with your public key
+                key: '{{ env('PAYSTACK_PUBLIC_KEY') }}', 
                 email: "abaaneg@gmail.com",
-                amount: {{ $total }} * 100, // Amount in kobo (GHS * 100)
-                currency: 'GHS', // Specify the currency
+                amount: {{ $total }} * 100, 
+                currency: 'GHS',
                 metadata: {
                     custom_fields: customFields
                 },

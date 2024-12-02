@@ -24,7 +24,6 @@ class CheckoutController extends Controller
                     'name' => $ticket['type'],
                     'quantity' => (int) $ticket['quantity'],
                     'price' => (float) $ticket['price'],
-
                 ];
             }
         }

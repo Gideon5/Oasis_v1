@@ -5,10 +5,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Pavo is a mobile app Tailwind CSS HTML template created to help you present benefits, features and information about mobile apps in order to convince visitors to download them" />
-    <meta name="author" content="Your name" />
 
     <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
     <meta property="og:site_name" content="" /> <!-- website name -->
@@ -44,13 +40,11 @@
     <nav class="navbar fixed-top">
         <div class="container sm:px-4 lg:px-8 flex flex-wrap items-center justify-between lg:flex-nowrap">
 
-            <!-- Text Logo - Use this if you don't have a graphic logo -->
-            <!-- <a class="text-gray-800 font-semibold text-3xl leading-4 no-underline page-scroll" href="index.html">Pavo</a> -->
-
+        
             <!-- Image Logo -->
             <a class="inline-block mr-4 py-0.5 text-xl whitespace-nowrap hover:no-underline focus:no-underline"
                 href="{{ route('homepage') }}">
-                <img src="{{ asset('images/logo.svg') }}" alt="alternative" class="h-8" />
+               MbaTicks Logo
             </a>
 
             <button

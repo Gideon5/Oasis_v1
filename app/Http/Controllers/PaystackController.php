@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 use App\Models\Invoice;
 use App\Models\Ticket;
 use App\Models\InvoiceTicket;
 use App\Models\Event;
 use App\Models\Payment;
 use Carbon\Carbon;
+use App\Mail\PaymentReceiptMail;
 
 
 
@@ -18,7 +21,6 @@ use Carbon\Carbon;
 class PaystackController extends Controller
 {
     public function callback(Request $request){
-            // dd($request);
             $reference = $request->reference;
             $secret_key = env('PAYSTACK_SECRET_KEY');
             $curl = curl_init();
@@ -87,7 +89,23 @@ class PaystackController extends Controller
             $payment->payment_status = "Completed";
             $payment->payment_method = "Paystack";
             $payment->save();
-            
+
+            //come back
+            // $user = Auth::user();
+            // $tickets =  json_decode(json_encode($response->data->metadata->custom_fields, true), true);
+            // $total = $response->data->amount / 100;
+
+            // // dd($user->email);
+
+            // // dd($tickets);
+
+            // //queue for better performance
+            // // Mail::to($user->email)->send(new PaymentReceiptMail($user, $tickets, $total, $event));
+            // try {
+            //     Mail::to($user->email)->queue(new PaymentReceiptMail($user, $tickets, $total, $event));
+            // } catch (\Exception $e) {
+            //     \Log::error('Mail Error: ' . $e->getMessage());
+            // }
 
                 return redirect()->route('success');
             } else {
