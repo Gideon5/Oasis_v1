@@ -12,30 +12,46 @@ use App\Models\Favorite;
 
 class DashboardController extends Controller
 {
+    public function index() {
+        return view('dashboard.index');
+    }
+
     public function show(){
         $user = Auth::user();
         $payments = Payment::where('user_id', $user->id)->get();
-        $favorites = Favorite::where('user_id', $user->id)->with('event')->get();
+        $favorites = $user->favorites()->with('event')->get();
+
         $transactions = DB::table('users')
         ->join('invoices','users.id', '=' ,'invoices.user_id')
-        ->join('payments', 'invoices.id', '=', 'payments.invoice_id')
-        ->select('payments.currency', 'invoices.total_amount', 'invoices.paid_at', 'payments.payment_status')
         ->get();
 
-        $event = DB::table('events')
-        ->join('tickets', 'events.id', '=', 'tickets.event_id')
-        ->join('invoice_tickets', 'tickets.id', '=', 'invoice_tickets.ticket_id')
-        ->select('events.name')
+        //fix the favroites on the dashboard
+        //come back and check to put all invoice tickets together in one transaction
+        
+        return view('user.dashboard', compact('transactions' , 'favorites'));
+
+    }
+
+    public function users(){
+        return view('dashboard.users.index'); 
+    }
+
+    public function create_user(){
+        return view('dashboard.users.create');
+    }
+
+    public function invoice_tickets($id){
+        $tickets = DB::table('users')
+        ->join('invoices','users.id', '=' ,'invoices.user_id')
+        ->join('invoice_tickets', 'invoices.id', '=' ,'invoice_tickets.invoice_id')
+        ->join('tickets', 'invoice_tickets.ticket_id', '=', 'tickets.id')
+        ->join('events', 'tickets.event_id', '=', 'events.id')
+        ->where('invoices.invoice_id', '=', $id)
+        ->select('events.name','invoice_tickets.quantity', 'tickets.type', 'tickets.price', 'events.image')
         ->get();
 
-        $event_name = ($event[0]->name);
-        //fix later
-        // dd($event_name);
-        // dd($transactions);
+        // dd($tickets);
 
-
-        return view('user.dashboard', compact('transactions', 'event_name' , 'favorites'));
-
-
+        return view('user.invoice.invoice_tickets', compact('tickets'));
     }
 }

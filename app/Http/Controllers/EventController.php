@@ -20,7 +20,7 @@ class EventController extends Controller
         return view('dashboard.events.index', compact('events'));
     }
 
-    public function showEventsByCategory($category){
+    public function show_events_by_category($category){
         $events = Event::where('category', $category)->get();
 
         // dd($events_by_cat);
@@ -48,19 +48,7 @@ class EventController extends Controller
 
             $image = $request->image;
 
-            // dd($image);
-
-            // Handle file upload
-            // if ($request->hasFile('image')) {
-            //     $imagePath = $request->file('image')->store('images/events', 'public');
-            //     $image = $imagePath;
-            // } else {
-            //     // Handle case where file upload fails
-            //     return redirect()->back()->with('error', 'File upload failed');
-            // }
-
-            // dd(Auth::user()->id);
-                    // Event::create($validatedData);
+         
                     
             $validatedData['user_id'] = Auth::user()->id;
             
@@ -169,7 +157,7 @@ class EventController extends Controller
         return view('dashboard.events.manage', compact(['event', 'tickets']));
     }
 
-    public function createTicket($id){
+    public function create_ticket($id){
         
         $event = Event::findOrFail($id);
 
@@ -214,14 +202,14 @@ class EventController extends Controller
 
             } 
             catch (ValidationException $e) {
-                dd($e->errors());
+                // dd($e->errors());
                 return redirect()->back()->withErrors($e->errors());
     
             }
         
     }
 
-    public function getEventDetails($slug){
+    public function get_event_details($slug){
         $event = Event::where('slug', $slug)->with('tickets')->firstOrFail();
         // $ticket = Ticket::where('event_id', $event->id);
         // dd($event->tickets()->get());
@@ -244,8 +232,9 @@ class EventController extends Controller
         if ($searchTerm) {
             $searchResults = Event::where('name', 'like', '%' . $searchTerm . '%')->get();
         } else {
-            $searchResults = Event::all();
+            $searchResults = [];
         }
+
         return view('event.search.index', compact(['searchResults', 'events', 'searchTerm']));
     }
 

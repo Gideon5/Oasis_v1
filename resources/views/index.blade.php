@@ -3,19 +3,9 @@
 @section('content')
     <!-- Introduction -->
     <!-- Header -->
-    <header id="header" class="header py-28 text-center md:pt-36 lg:text-left xl:pt-44 xl:pb-32">
+    <header id="header" class="header text-center md:pt-36 lg:text-left xl:pt-44 xl:pb-32">
         <div class="container px-4 sm:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
-            <div class="mb-16 lg:mt-32 xl:mt-40 xl:mr-12">
-                <h1 class="h1-large mb-5">Team management mobile application</h1>
-                <p class="p-large mb-8">Start getting things done together with your team based on Pavo's revolutionary
-                    team management features</p>
-                <a class="btn-solid-lg" href="#your-link"><i class="fab fa-apple"></i>Download</a>
-                <a class="btn-solid-lg secondary" href="#your-link"><i class="fab fa-google-play"></i>Download</a>
-            </div>
-            <div class="xl:text-right">
-                <img class="inline" src="{{ asset('images/header-smartphone.png') }}" alt="alternative" />
-            </div>
-        </div>
+          
     </header>
 
     <section class="">
@@ -25,7 +15,7 @@
                 <div class="flex w-full mx-10 rounded bg-white">
                     <input
                         class=" w-full border-none bg-transparent px-4 py-1 text-gray-400 outline-none focus:outline-none"
-                        name="search" type="search" placeholder="Search event" />
+                        name="search" type="search" placeholder="Search event" required/>
                     <button type="submit" class="m-2 rounded bg-blue-600 px-4 py-2 text-white">
                         <svg class="fill-current h-6 w-6" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
@@ -67,11 +57,11 @@
                                 <div class="px-4 py-6">
                                     <div class="flex items-center justify-between">
                                         <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
-                                        @livewire('fav-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                                        @livewire('fav-button', ['event_id' => $event->id, 'is_favorite' => $event->is_favorited])
                                     </div>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
-                                    <a href="{{ route('event_Details', $event->slug) }}">
+                                    <a href="{{ route('event_details', $event->slug) }}">
                                         <button type="button"
                                             class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
                                             View
@@ -117,11 +107,11 @@
                                 <div class="px-4 py-6">
                                     <div class="flex items-center justify-between">
                                         <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
-                                        @livewire('fav-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                                        @livewire('fav-button', ['event_id' => $event->id, 'is_favorite' => $event->is_favorited])
                                     </div>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
-                                    <a href="{{ route('event_Details', $event->slug) }}">
+                                    <a href="{{ route('event_details', $event->slug) }}">
                                         <button type="button"
                                             class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
                                             View
@@ -164,11 +154,11 @@
                                 <div class="px-4 py-6">
                                     <div class="flex items-center justify-between">
                                         <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
-                                        @livewire('fav-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                                        @livewire('fav-button', ['event_id' => $event->id, 'is_favorite' => $event->is_favorited])
                                     </div>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
-                                    <a href="{{ route('event_Details', $event->slug) }}">
+                                    <a href="{{ route('event_details', $event->slug) }}">
                                         <button type="button"
                                             class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
                                             View
@@ -210,11 +200,11 @@
                                 <div class="px-4 py-6">
                                     <div class="flex items-center justify-between">
                                         <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
-                                        @livewire('fav-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                                        @livewire('fav-button', ['event_id' => $event->id, 'is_favorite' => $event->is_favorited])
                                     </div>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
-                                    <a href="{{ route('event_Details', $event->slug) }}">
+                                    <a href="{{ route('event_details', $event->slug) }}">
                                         <button type="button"
                                             class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
                                             View
@@ -255,11 +245,11 @@
                                 <div class="px-4 py-6">
                                     <div class="flex items-center justify-between">
                                         <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
-                                        @livewire('fav-button', ['eventId' => $event->id, 'isFavorited' => $event->is_favorited])
+                                        @livewire('fav-button', ['event_id' => $event->id, 'is_favorite' => $event->is_favorited])
                                     </div>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
-                                    <a href="{{ route('event_Details', $event->slug) }}">
+                                    <a href="{{ route('event_details', $event->slug) }}">
                                         <button type="button"
                                             class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
                                             View
@@ -283,157 +273,5 @@
 
 
 
-    <!-- Statistics -->
-    <div class="counter">
-        <div class="container px-4 sm:px-8">
 
-            <!-- Counter -->
-            <div id="counter">
-                <div class="cell">
-                    <div class="counter-value number-count" data-count="231">1</div>
-                    <p class="counter-info">Happy Users</p>
-                </div>
-                <div class="cell">
-                    <div class="counter-value number-count" data-count="385">1</div>
-                    <p class="counter-info">Issues Solved</p>
-                </div>
-                <div class="cell">
-                    <div class="counter-value number-count" data-count="159">1</div>
-                    <p class="counter-info">Good Reviews</p>
-                </div>
-                <div class="cell">
-                    <div class="counter-value number-count" data-count="127">1</div>
-                    <p class="counter-info">Case Studies</p>
-                </div>
-                <div class="cell">
-                    <div class="counter-value number-count" data-count="211">1</div>
-                    <p class="counter-info">Orders Received</p>
-                </div>
-            </div>
-            <!-- end of counter -->
-
-        </div> <!-- end of container -->
-    </div> <!-- end of counter -->
-    <!-- end of statistics -->
-
-
-    <!-- Testimonials -->
-    <div class="slider-1 py-32 bg-gray">
-        <div class="container px-4 sm:px-8">
-            <h2 class="mb-12 text-center lg:max-w-xl lg:mx-auto">What do users think about Ticks</h2>
-
-            <!-- Card Slider -->
-            <div class="slider-container">
-                <div class="swiper-container card-slider">
-                    <div class="swiper-wrapper">
-
-                        <!-- Slide -->
-                        <div class="swiper-slide">
-                            <div class="card">
-                                <img class="card-image" src="images/testimonial-1.jpg" alt="alternative" />
-                                <div class="card-body">
-                                    <p class="italic mb-3">It's been so fun to work with Pavo, I've managed to integrate it
-                                        properly into my business flow and it's great</p>
-                                    <p class="testimonial-author">Jude Thorn - Designer</p>
-                                </div>
-                            </div>
-                        </div> <!-- end of swiper-slide -->
-                        <!-- end of slide -->
-
-                        <!-- Slide -->
-                        <div class="swiper-slide">
-                            <div class="card">
-                                <img class="card-image" src="images/testimonial-2.jpg" alt="alternative" />
-                                <div class="card-body">
-                                    <p class="italic mb-3">We were so focused on launching as many campaigns as possible
-                                        that we've forgotten to target our loyal customers</p>
-                                    <p class="testimonial-author">Roy Smith - Developer</p>
-                                </div>
-                            </div>
-                        </div> <!-- end of swiper-slide -->
-                        <!-- end of slide -->
-
-                        <!-- Slide -->
-                        <div class="swiper-slide">
-                            <div class="card">
-                                <img class="card-image" src="images/testimonial-3.jpg" alt="alternative" />
-                                <div class="card-body">
-                                    <p class="italic mb-3">I've been searching for a tool like Pavo for so long. I love the
-                                        reports it generates and the amazing high accuracy</p>
-                                    <p class="testimonial-author">Marsha Singer - Marketer</p>
-                                </div>
-                            </div>
-                        </div> <!-- end of swiper-slide -->
-                        <!-- end of slide -->
-
-                        <!-- Slide -->
-                        <div class="swiper-slide">
-                            <div class="card">
-                                <img class="card-image" src="images/testimonial-4.jpg" alt="alternative" />
-                                <div class="card-body">
-                                    <p class="italic mb-3">We've been waiting for a powerful piece of software that can
-                                        help businesses manage their marketing projects</p>
-                                    <p class="testimonial-author">Tim Shaw - Designer</p>
-                                </div>
-                            </div>
-                        </div> <!-- end of swiper-slide -->
-                        <!-- end of slide -->
-
-                        <!-- Slide -->
-                        <div class="swiper-slide">
-                            <div class="card">
-                                <img class="card-image" src="images/testimonial-5.jpg" alt="alternative" />
-                                <div class="card-body">
-                                    <p class="italic mb-3">Searching for a great prototyping and layout design app was
-                                        difficult but thankfully I found app suite quickly</p>
-                                    <p class="testimonial-author">Lindsay Spice - Marketer</p>
-                                </div>
-                            </div>
-                        </div> <!-- end of swiper-slide -->
-                        <!-- end of slide -->
-
-                        <!-- Slide -->
-                        <div class="swiper-slide">
-                            <div class="card">
-                                <img class="card-image" src="images/testimonial-6.jpg" alt="alternative" />
-                                <div class="card-body">
-                                    <p class="italic mb-3">The app support team is amazing. They've helped me with some
-                                        issues and I am so grateful to the entire team</p>
-                                    <p class="testimonial-author">Ann Blake - Developer</p>
-                                </div>
-                            </div>
-                        </div> <!-- end of swiper-slide -->
-                        <!-- end of slide -->
-
-                    </div> <!-- end of swiper-wrapper -->
-
-                    <!-- Add Arrows -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                    <!-- end of add arrows -->
-
-                </div> <!-- end of swiper-container -->
-            </div> <!-- end of slider-container -->
-            <!-- end of card slider -->
-
-        </div> <!-- end of container -->
-    </div> <!-- end of slider-1 -->
-    <!-- end of testimonials -->
-
-
-    {{-- <!-- Conclusion -->
-    <div id="download" class="basic-5">
-        <div class="container px-4 sm:px-8 lg:grid lg:grid-cols-2">
-            <div class="mb-16 lg:mb-0">
-                <img src="images/conclusion-smartphone.png" alt="alternative" />
-            </div>
-            <div class="lg:mt-24 xl:mt-44 xl:ml-12">
-                <p class="mb-9 text-gray-800 text-3xl leading-10">Team management mobile applications don’t get much better
-                    than Pavo. Download it today</p>
-                <a class="btn-solid-lg" href="#your-link"><i class="fab fa-apple"></i>Download</a>
-                <a class="btn-solid-lg secondary" href="#your-link"><i class="fab fa-google-play"></i>Download</a>
-            </div>
-        </div> <!-- end of container -->
-    </div> <!-- end of basic-5 --> --}}
-    <!-- end of conclusion -->
 @endsection

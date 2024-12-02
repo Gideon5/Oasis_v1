@@ -9,45 +9,49 @@ use Illuminate\Support\Facades\Auth;
 
 class FavButton extends Component
 {   
-    public $eventId;
-    public $isFavorited;
+    public $event_id;
+    public $is_favorite;
 
   
 
-    public function mount($eventId)
+    public function mount($event_id)
     {
-
-        
-        $this->eventId = $eventId;
-        $this->isFavorited = Favorite::where('event_id', $eventId)
-            ->where('user_id', Auth::id())
-            ->exists();
+        $this->event_id = $event_id;
+        if(Auth::check()){
+            $this->is_favorite = Auth::user()->favorites()->where('event_id', $event_id)->exists();
+        }
+        else {
+            $this->is_favorite = false;
+        }
     }
 
     public function toggleFavorite()
     {   
+
+        //fix the favorites on the dashboard
         if(!Auth::check()){
             return redirect()->route('login');
         }
 
         $userId = Auth::id();
         
-        if ($this->isFavorited) {
-            Favorite::where('event_id', $this->eventId)
+        if ($this->is_favorite) {
+            Favorite::where('event_id', $this->event_id)
                 ->where('user_id', $userId)
                 ->delete();
     
-            $this->isFavorited = false;
+            $this->is_favorite = false;
         } else {
-            if (!Favorite::where('event_id', $this->eventId)
+            if (!Favorite::where('event_id', $this->event_id)
                 ->where('user_id', $userId)
                 ->exists()) {
                 Favorite::create([
-                    'event_id' => $this->eventId,
+                    'event_id' => $this->event_id,
                     'user_id' => $userId,
+                    'is_favorite' => true
                 ]);
     
-                $this->isFavorited = true;
+                $this->is_favorite = true;
             }
         }
     }

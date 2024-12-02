@@ -37,7 +37,6 @@
         </div>
     </div>
     <div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
-{{-- @dd($tickets) --}}
         <div class="px-4 pt-8">
             <p class="text-xl font-medium">Order Summary</p>
             <p class="text-gray-400">Check your items.</p>
@@ -60,7 +59,7 @@
         <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
             <p class="text-xl font-medium">Payment Details</p>
             <p class="text-gray-400">Complete your order by providing your payment details.</p>
-            <form id="paymentForm">
+            <form  id="paymentForm">
                 <label for="email" class="mt-4 mb-2 block text-sm font-medium">Email</label>
                 <div class="relative">
                     <input type="text" id="email" name="email"
@@ -144,8 +143,8 @@
                         <p class="text-2xl font-semibold text-gray-900">${{ number_format($total, 2) }}</p>
                     </div>
                     
-                        <button type="submit" class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Pay
-                            Order</button>
+                        <button type="submit" class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
+                            Pay Order</button>
                 </div>
         </div>
         </form>
@@ -165,6 +164,9 @@
         function payWithPaystack(e) {
             e.preventDefault();
 
+        //validate form fields later
+
+
             let tickets = @json($tickets);
             console.log(tickets)
 
@@ -173,21 +175,22 @@
                     event_id: ticket.event_id,
                     ticket_id: ticket.id,
                     ticket_quantity: ticket.quantity,
-                    price: ticket.price,
+                    ticket_price: ticket.price,
+                    ticket_type: ticket.name,
                     total: ticket.price * ticket.quantity
                 };
             });
 
             let handler = PaystackPop.setup({
-                key: '{{ env('PAYSTACK_PUBLIC_KEY') }}', // Replace with your public key
+                key: '{{ env('PAYSTACK_PUBLIC_KEY') }}', 
                 email: "abaaneg@gmail.com",
-                amount: {{ $total }} * 100, // Amount in kobo (GHS * 100)
-                currency: 'GHS', // Specify the currency
+                amount: {{ $total }} * 100, 
+                currency: 'GHS',
                 metadata: {
                     custom_fields: customFields
                 },
                 onClose: function() {
-                    alert('Window closed.');
+                    alert('Transaction cancelled');
                 },
                 callback: function(response) {
                     window.location.href = "{{ route('callback') }}" + '?reference=' + response.reference;

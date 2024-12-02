@@ -20,7 +20,6 @@ class Ticket extends Model
 
         static::creating(function ($ticket) {
             $ticket->tickets_sold = 0;
-            $ticket->tickets_left = $ticket->ticket_quantity;
         });
 
     }

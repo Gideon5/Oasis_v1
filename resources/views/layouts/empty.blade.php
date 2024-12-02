@@ -7,8 +7,7 @@
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://js.paystack.co 'unsafe-inline';">
 
     <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Pavo is a mobile app Tailwind CSS HTML template created to help you present benefits, features and information about mobile apps in order to convince visitors to download them" />
+    <meta name="description"/>
     <meta name="author" content="Your name" />
 
     <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->

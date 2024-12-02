@@ -17,23 +17,25 @@
                     class="flex items-center justify-center transition-all duration-300 bg-white p-4 shadow-md border-l-4 border-blue-600">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
                         <!-- Replace this with your grid items -->
-
+                        
                         @if (!empty($favorites) && count($favorites) > 0)
+                       
                             @foreach ($favorites as $favorite)
+                            
                                 <div
                                     class="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif]">
                                     <div class="w-full h-48 overflow-hidden">
                                         <img src="{{ asset('storage/' . $favorite->event->image) }}"
                                             class="w-full h-full object-cover" alt="Event Image" />
                                     </div>
-                                    <div class="px-4 py-6">
+                                    <div class="px-4 py-6"> 
                                         <div class="flex items-center justify-between">
                                             <h3 class="text-[#333] text-xl font-bold">{{ $favorite->event->name }}</h3>
-                                            @livewire('fav-button', ['eventId' => $favorite->event->id, 'is_Favorited' => $favorite->event->is_favorited])
+                                            @livewire('fav-button', ['event_id' => $favorite->event->id, 'is_favorite' => $favorite->is_favorite])
                                         </div>
                                         <p class="mt-4 text-sm text-gray-500">{{ $favorite->event->location }}</p>
                                         <p class="mt-4 text-sm text-gray-500">{{ $favorite->event->date }}</p>
-                                        <a href="{{ route('event_Details', $favorite->event->slug) }}">
+                                        <a href="{{ route('event_details', $favorite->event->slug) }}">
                                             <button type="button"
                                                 class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
                                                 View
@@ -55,22 +57,21 @@
 
                 <div x-show="openTab === 2"
                     class="flex items-center justify-center transition-all duration-300 bg-white p-4 shadow-md border-l-4 border-blue-600">
-                    <div class="grid grid-cols-1 hover:grid-cols-6">
+                    <div class="grid grid-cols-3 gap-8 hover:grid-cols-6">
                         @foreach ($transactions as $transaction)
-                            <div class="max-w-4xl">
-                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">Event name</h2>
-                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->currency }}
-                                    {{ $transaction->total_amount }}</h2>
-                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->currency }}</h2>
-                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->payment_status }}
+                        {{-- link to page --}}
+                        <a href="{{ route('tickets', ['id' => $transaction->invoice_id]) }}">
+                            <div class="max-w-4xl border rounded-md border-blue-400 hover:bg-blue-300">
+                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">Transaction Id: {{ $transaction->invoice_id }}
+                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">
+                                   Amt: ${{ $transaction->total_amount }}</h2>
                                 </h2>
-                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">{{ $transaction->paid_at }}</h2>
-                                <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                                    aliquam
-                                    justo nec justo lacinia, vel ullamcorper nibh tincidunt.</p>
-                                <!-- Add your list of things here -->
+                                <h2 class="text-2xl font-semibold mb-2 text-blue-600">Transaction date: {{ $transaction->paid_at }}</h2>
+                                <p class="text-gray-700">m...t.</p>
                             </div>
                             <hr class="h-4" />
+
+                        </a>
                         @endforeach
 
 
@@ -80,10 +81,9 @@
                 <div x-show="openTab === 3"
                     class="flex items-center justify-center transition-all duration-300 bg-white p-4 shadow-md border-l-4 border-blue-600">
                     <div class="max-w-4xl mx-auto">
-                        <h2 class="text-2xl font-semibold mb-2 text-blue-600">Others</h2>
+                        <h2 class="text-2xl font-semibold mb-2 text-blue-600">TBD</h2>
                         <p class="text-gray-700">Fusce hendrerit urna vel tortor luctus, nec tristique odio tincidunt.
                             Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
-                        <!-- Add your list of things here -->
                     </div>
                 </div>
             </div>

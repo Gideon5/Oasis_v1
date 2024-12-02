@@ -25,7 +25,7 @@
                         <p class="text-lg mb-6">{{ $event->description }}</p>
                         <div class="mb-6">
                             <p class="text-xl font-bold mb-2">When:</p>
-                            <p class="text-lg">{{ $event->date }}</p>
+                            {{-- <p class="text-lg">{{ $event->date }}</p> --}}
                             <p class="text-lg">{{ $event->formatted_date }} at {{ $event->formatted_start_time }}</p>
 
 
@@ -33,15 +33,20 @@
                         <div class="mb-6">
                             <p class="text-xl font-bold mb-2">Where:</p>
                             <p class="text-lg">{{ $event->location }}</p>
-                            <p class="text-lg">1805 Geary Blvd, San Francisco, CA</p>
+                            {{-- <p class="text-lg">1805 Geary Blvd, San Francisco, CA</p> --}}
                         </div>
                         <div class="mb-6">
                             <p class="text-xl font-bold mb-2">Tickets:</p>
-                            @foreach ($event->tickets as $ticket)
-                                <p class="text-lg">${{ $ticket->price }} - {{ $ticket->type }}</p>
-                                {{-- <p class="text-lg">$75 - VIP</p>
-                            <p class="text-lg">$75 - General Admission</p> --}}
-                            @endforeach
+                            @if ($event->tickets->isEmpty())
+                                <p class="text-lg">Tickets coming out soon</p>
+                            @else
+                                @foreach ($event->tickets as $ticket)
+                                    <p class="text-lg">${{ $ticket->price }} - {{ $ticket->type }}</p>
+                                    {{-- <p class="text-lg">$75 - VIP</p>
+                        <p class="text-lg">$75 - General Admission</p> --}}
+                                @endforeach
+                            @endif
+
 
                         </div>
 
@@ -52,18 +57,16 @@
         </div>
     </section>
 
-    <section class="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
-        <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
-            <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Tickets</h2>
-            <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
-                <div class="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
-                    <div class="space-y-6">
-                        @if ($event->tickets->isEmpty())
-                            <p>No tickets available for this event.</p>
-                        @else
+    @if ($event->tickets->isNotEmpty())
+        <section class="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
+            <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+                <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Tickets</h2>
+                <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
+                    <div class="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
+                        <div class="space-y-6">
                             <form id="ticket-form" action="{{ route('checkout') }}" method="POST">
                                 @csrf
-                                @foreach ($event->tickets as $ticket)
+                                ` @foreach ($event->tickets as $ticket)
                                     <div class="ticket-item rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6"
                                         data-ticket-id="{{ $ticket->id }}" data-ticket-price="{{ $ticket->price }}">
                                         <div
@@ -117,39 +120,40 @@
                                         </div>
                                     </div>
                                 @endforeach
+                        </div>
                     </div>
-                </div>
 
-                <!-- Order Summary Section -->
-                <div class="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
-                    <div
-                        class="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
-                        <p class="text-xl font-semibold text-gray-900 dark:text-white">Order summary</p>
+                    <!-- Order Summary Section -->
+                    <div class="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
+                        <div
+                            class="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
+                            <p class="text-xl font-semibold text-gray-900 dark:text-white">Order summary</p>
 
-                        <div id="order-summary" class="space-y-4">
-                            <!-- Ticket items summary will be inserted here -->
+                            <div id="order-summary" class="space-y-4">
+                                <!-- Ticket items summary will be inserted here -->
+                            </div>
+
+                            <dl
+                                class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
+                                <dt class="text-base font-bold text-gray-900 dark:text-white">Total</dt>
+                                <dd id="order-total" class="text-base font-bold text-gray-900 dark:text-white">$0.00</dd>
+                            </dl>
                         </div>
 
-                        <dl
-                            class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
-                            <dt class="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                            <dd id="order-total" class="text-base font-bold text-gray-900 dark:text-white">$0.00</dd>
-                        </dl>
+                        <div id="checkout-button-container" class="hidden mt-6">
+                            <button type="submit"
+                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                type="button">
+                                Buy Tickets
+                            </button>
+                        </div>
+                        </form>
                     </div>
-
-                    <div id="checkout-button-container" class="hidden mt-6">
-                        <button type="submit"
-                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            type="button">
-                            Buy Tickets
-                        </button>
-                    </div>
-                    </form>
-                    @endif
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
+
 
     <script>
         function updateOrderSummary() {
@@ -206,7 +210,6 @@
             }
         }
 
-        // Initial update
         updateOrderSummary();
     </script>
 @endsection

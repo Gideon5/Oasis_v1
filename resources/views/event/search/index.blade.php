@@ -48,7 +48,7 @@
                                     <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
                                     <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
-                                    <a href="{{ route('event_Details', $event->slug) }}">
+                                    <a href="{{ route('event_details', $event->slug) }}">
                                         <button type="button" class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
                                             View
                                         </button>
@@ -59,7 +59,7 @@
                     @else
                         <div>
                             <h1 class="mr-14 mt-10 text-4xl flex items-center justify-center font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl">
-                                No Event found
+                                No Event found for {{ $searchTerm }}
                             </h1>
                         </div>
                     @endif
@@ -86,7 +86,7 @@
                                 <h3 class="text-[#333] text-xl font-bold">{{ $event->name }}</h3>
                                 <p class="mt-4 text-sm text-gray-500">{{ $event->location }}</p>
                                 <p class="mt-4 text-sm text-gray-500">{{ $event->date }}</p>
-                                <a href="{{ route('event_Details', $event->slug) }}">
+                                <a href="{{ route('event_details', $event->slug) }}">
                                     <button type="button" class="px-6 py-2.5 mt-6 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">
                                         View
                                     </button>
