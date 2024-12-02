@@ -16,7 +16,7 @@
     <meta name="twitter:card" content="summary_large_image" /> <!-- to have large image post format in Twitter -->
 
     <!-- Webpage Title -->
-    <title>MbaTicks</title>
+    <title>Oasis</title>
 
     <!-- Styles -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -44,7 +44,7 @@
             <!-- Image Logo -->
             <a class="inline-block mr-4 py-0.5 text-xl whitespace-nowrap hover:no-underline focus:no-underline"
                 href="{{ route('homepage') }}">
-               MbaTicks Logo
+                Oasis Logo
             </a>
 
             <button

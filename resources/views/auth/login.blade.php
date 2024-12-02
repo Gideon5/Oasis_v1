@@ -35,7 +35,7 @@
 
             </div>
             <div class="w-full mx-auto px-20 flex-col items-center space-y-6">
-                <h1 class="text-white font-bold text-4xl font-sans">Mba_Ticks</h1>
+                <h1 class="text-white font-bold text-4xl font-sans">Oasis</h1>
                 <p class="text-white mt-1">The simplest app to use</p>
                 <div class="flex justify-center lg:justify-start mt-6">
                     <a href="#"

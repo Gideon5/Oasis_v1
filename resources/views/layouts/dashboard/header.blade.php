@@ -5,14 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Mba_ticks is a mobile app Tailwind CSS HTML template created to help you present benefits, features and information about mobile apps in order to convince visitors to download them" />
-    <meta name="author" content="Your name" />
+
 
 
     <!-- Webpage Title -->
-    <title>Mba_ticks Dashboard </title>
+    <title>Oasis Dashboard </title>
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet"
         href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">

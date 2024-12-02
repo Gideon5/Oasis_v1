@@ -3,7 +3,7 @@
     <div class="container px-4 sm:px-8">
         <h4 class="mb-8 lg:max-w-3xl lg:mx-auto">
             This e-ticketing website lets you buy tickets for events online. Contact us at
-            <a class="text-indigo-600 hover:text-gray-500" href="mailto:support@abaaneg@gmail.com">support@mba_ticks.com</a>
+            <a class="text-indigo-600 hover:text-gray-500" href="mailto:support@abaaneg@gmail.com">support@Oasis.com</a>
         </h4>
         <div class="social-container">
             <span class="fa-stack">
